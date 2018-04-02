@@ -96,5 +96,5 @@ div
 fieldset
 {
 	height:95%;
-	width:75%;
+	width:400px;
 }

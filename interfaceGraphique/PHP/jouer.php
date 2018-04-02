@@ -17,34 +17,52 @@
                 <p>
                   Confidentialité :
                 </p>
+                
                 <p>
-                  <input type="radio" name="bouton_Confidentialite" />
-                  <label><span></span>Publique</label>
+                  <label>
+                    <input type="radio" name="bouton_Confidentialite" />
+                    Publique
+                  </label>
                 </p>
+
                 <p>
-                  <input type="radio" name="bouton_Confidentialite" />
-                  <label><span></span>Privée</label>
+                  <label>
+                    <input type="radio" name="bouton_Confidentialite" />
+                    Privée
+                  </label>
                 </p>
+
                 <p>
-                  <input type="radio" name="bouton_Confidentialite" />
-                  <label><span></span>Confidentielle</label>
+                  <label>
+                    <input type="radio" name="bouton_Confidentialite" />
+                    Confidentielle
+                  </label>
                 </p>
 
                 <p>
                   Taille du Goban :
                 </p>
                 <p>
-                  <input type="radio" name="taille-Goban" />
-                  <label><span></span>9x9</label>
+                  <label>
+                    <input type="radio" name="taille-Goban" />
+                    9x9
+                  </label>
                 </p>
+
                 <p>
-                  <input type="radio" name="taille-Goban" />
-                  <label><span></span>13x13</label>
+                  <label>
+                    <input type="radio" name="taille-Goban" />
+                    13x13
+                  </label>
                 </p>
+
                 <p>
-                  <input type="radio" name="taille-Goban" />
-                  <label><span></span>19x19</label>
+                  <label>
+                    <input type="radio" name="taille-Goban" />
+                    19x19
+                  </label>
                 </p>
+
                 <p>
                   <input type="submit" value="Créer la partie" id="bouton_Creer_Partie" />
                 </p>
@@ -58,7 +76,7 @@
               <legend> Rejoindre une partie : </legend>
                <p>Nom de l'hôte : </p>
                <input type="search" size="20" maxlength="40" id="search_Hote" />
-               <p>ID de la partie : </p>
+               <p>ou ID de la partie : </p>
                <input type="search" size="20" maxlength="40" id="search_ID" />
                <p>
                  <input type="submit" value="Rechercher" id="bouton_Rechercher_Partie" />

@@ -16,19 +16,23 @@
             <legend> Regarder une partie : </legend>
              <p>Statut de la partie : </p>
              <p>
-               <input type="radio" name="type_Partie" />
-               <label><span></span>En cours</label>
+               <label>
+                 <input type="radio" name="type_Partie" />
+                 En cours
+               </label>
              </p>
              <p>
-               <input type="radio" name="type_Partie" />
-               <label><span></span>Terminée</label>
+               <label>
+                 <input type="radio" name="type_Partie" />
+                 Terminée
+               </label>
              </p>
              <p>Nom d'un des joueurs : </p>
              <input type="search" size="20" maxlength="40" id="search_Hote" />
              <p>
                <input type="submit" value="Rechercher" id="bouton_Rechercher_Partie" />
              </p>
-             <p>ID de la partie : </p>
+             <p>ou ID de la partie : </p>
              <input type="search" size="20" maxlength="40" id="search_ID" />
              <p>
                <input type="submit" value="Rechercher" id="bouton_Rechercher_Partie" />
