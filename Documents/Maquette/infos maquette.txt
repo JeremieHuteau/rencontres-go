@@ -1,0 +1,8 @@
+Lien preview : https://pr.to/9LLRDB/
+
+Je ne sais pas trop quoi mettre sur l'accueil, mais ce sera du texte je suppose
+
+Pour les listes de recherche de parties (à rejoindre ou à regarder),
+je ne sais pas trop quelles infos afficher, et comment les afficher,
+du coup j'ai mis des listes pour l'instant mais ces recherches c'est vraiment une partie à revoir
+
