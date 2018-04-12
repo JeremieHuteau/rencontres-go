@@ -15,7 +15,7 @@
             <fieldset>
               <legend>Créer une partie : </legend>
                 <p>
-                  Confidentialité :
+                  Confidentialite :
                 </p>
 
                 <p>
@@ -28,7 +28,7 @@
                 <p>
                   <label>
                     <input type="radio" name="bouton_Confidentialite" value="Prive"/>
-                    Privée
+                    Privee
                   </label>
                 </p>
 
@@ -74,22 +74,40 @@
 
             <fieldset>
               <legend> Rejoindre une partie : </legend>
-               <p>Nom de l'hôte : </p>
+               <p>Nom de l'hote : </p>
                <input type="search" size="20" maxlength="40" name="search_Hote" />
                <p>ou ID de la partie : </p>
                <input type="search" size="20" maxlength="40" name="search_ID"/>
                <p>
                  <input type="submit" value="Rechercher" id="bouton_Rechercher_Partie" />
                </p>
-            </fieldset>
 
+               <select name="dropdown_confidentialite">
+                 <option value="Public">Partie Publique</option>
+                 <option value="Prive">Partie Privee</option>
+                 <option value="Confidentiel">Partie Confidentielle</option>
+              </select>
+
+              <nav style="height: 50px; overflow:hidden; overflow-y:scroll;" name="liste">
+                <ul id="liste">
+                </ul>
+              </nav>
+
+              <p id="resultat">
+
+              </p>
+
+            </fieldset>
           </form>
 
         </div>
         <footer>
-            <p>Projet Développement d'applications web - Université de Bourgogne - Groupe 2</p>
+            <p>Projet Developpement d'applications web - Universite de Bourgogne - Groupe 2</p>
         </footer>
       </main>
 
     </body>
+      <script src="../JS/events.js"></script>
+      <script src="../JS/gestionparties.js"></script>
+
   </html>
