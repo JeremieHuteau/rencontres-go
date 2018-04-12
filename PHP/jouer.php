@@ -88,15 +88,6 @@
                  <option value="Confidentiel">Partie Confidentielle</option>
               </select>
 
-              <nav style="height: 50px; overflow:hidden; overflow-y:scroll;" name="liste">
-                <ul id="liste">
-                </ul>
-              </nav>
-
-              <p id="resultat">
-
-              </p>
-
             </fieldset>
           </form>
 
