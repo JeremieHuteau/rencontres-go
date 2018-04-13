@@ -2,12 +2,12 @@
   <html>
     <head>
       <meta charset="utf-8" />
-      <link rel="stylesheet" type="text/css" href="style.php">
+      <link rel="stylesheet" type="text/css" href="../CSS/style.css">
       <title>Rencontres-go</title>
     </head>
     <body>
       <main>
-        <?php include_once 'header.php';?>
+        <?php include 'header.php';?>
         <div id="div_formulaire">
 
         <form action="partie.php" method="post" >
@@ -17,13 +17,13 @@
              <p>Statut de la partie : </p>
              <p>
                <label>
-                 <input type="radio" name="type_Partie" />
+                 <input type="radio" name="type_Partie" value="en_Cours"/>
                  En cours
                </label>
              </p>
              <p>
                <label>
-                 <input type="radio" name="type_Partie" />
+                 <input type="radio" name="type_Partie" value="terminee"/>
                  Terminée
                </label>
              </p>
@@ -41,6 +41,7 @@
 
         </form>
 
+        <?php include_once 'recherche.php';?>
         </div>
         <footer>
             <p>Projet Développement d'applications web - Université de Bourgogne - Groupe 2</p>
