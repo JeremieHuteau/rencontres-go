@@ -82,14 +82,27 @@
                  <input type="submit" value="Rechercher" id="bouton_Rechercher_Partie" />
                </p>
 
-               <select name="dropdown_confidentialite">
-                 <option value="Public">Partie Publique</option>
-                 <option value="Prive">Partie Privee</option>
-                 <option value="Confidentiel">Partie Confidentielle</option>
-              </select>
+
 
             </fieldset>
+
           </form>
+
+          <form>
+               <select name="dropdown_taille">
+                  <option value="0">Taille indifférente</option>
+                  <option value="9">9 x 9</option>
+                  <option value="13">13 x 13</option>
+                  <option value="19">19 x 19</option>
+               </select>
+
+                <nav style="height: 100px; width: 350px; overflow:hidden; overflow-y:scroll; background-color: grey;" >
+                    <ul id="liste">
+
+                    </ul>
+                </nav>
+          </form>
+
 
         </div>
         <footer>
@@ -100,5 +113,4 @@
     </body>
       <script src="../JS/events.js"></script>
       <script src="../JS/gestionparties.js"></script>
-
   </html>

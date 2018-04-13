@@ -16,35 +16,33 @@ class PreView extends Events {
 
     initialize() {
         //gère le clic sur le bouton de validation
-        //document.querySelector("#bouton_Creer_Partie").onclick = () =>
-            //this.onClickValidation();
+        //affichage par défaut
+            this.affichageParties();
+        //affichage après choix de la taille
+        document.querySelector('select[name="dropdown_taille"]').onclick = () =>
+            this.affichageParties();
     }
 
-    onClickValidation(){
+    affichageParties(){
         //ouvre requete xml
         var httpc = new XMLHttpRequest();
-        //ouvre le fichier test
-        var url = "partie.php";
+        var url = "recherche.php";
         //requete post
         httpc.open("POST", url, true);
-
         httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-        //récupère les valeurs du formulaire
-        let pseudo = document.querySelector("#pseudo").value;
-        let confidentialite = document.querySelector("input[name=confident]:checked").value;
-        let taille = document.querySelector("input[name=taille]:checked").value;
+        //récupère les valeurs
+        let liste = document.querySelector("#liste");
+        let taille = document.querySelector('select[name="dropdown_taille"]').value;
 
-        // les valeurs sont mises dans une chaine de cratère qu'on va renvoyer en parametre
-        var dataString = "jpseudo=" + pseudo
-            + "&jconfident=" + confidentialite
-            + "&jtaille=" + taille;
+        // les valeurs sont mises dans une chaine de caractère qu'on va renvoyer en parametre
+        var dataString = "jliste=" + liste + "&jtaille=" + taille;
 
         httpc.send(dataString);
         httpc.onreadystatechange = function() { //appelle une fonction quand l'état change
             if(httpc.readyState == 4 && httpc.status == 200) { // complet et sans erreurs
                 //affiche le texte de résultat dans l'élément qui a comme id resulat
-                document.getElementById("resultat").innerHTML = this.responseText;
+                liste.innerHTML = this.responseText;
             }
         }
     }

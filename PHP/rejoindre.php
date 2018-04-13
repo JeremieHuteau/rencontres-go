@@ -1,7 +1,17 @@
 <?php
+
   //variables du formulaire qu'on récupère avec post
-  $hote = $_POST['search_Hote'];
-  $partie = $_POST['search_ID'];
+  //elles n'existent pas si on ouvre le fichier avec recherche.php 
+  if(isset($_POST['search_Hote']) && isset($_POST['search_ID'])){
+    $hote = $_POST['search_Hote'];
+    $id = $_POST['search_ID'];
+  }else{
+    //reprise de la session
+    session_start();
+    $hote = $_SESSION["nom"];
+    $id = $_SESSION["id"];
+  }
+
 
   //connexion à la bdd
   $dsn = 'projetweb';
@@ -28,7 +38,7 @@
         'id' => $row['idUtil'],
         'nom' => $row['Pseudo'],
       );
-      //vérifie si on a le nom d'hote qui correspon a un id d'une partie crée
+      //vérifie si on a le nom d'hote qui correspond a un id d'une partie crée
       //ça évite de faire deux foreach après
       if($hote==$tab_utilisateurs[$cpt]['nom']){
         $hote="okay";
@@ -47,7 +57,7 @@
         echo "<br />L'id de la partie est ".$row['idPartie'];
         echo "<br />La taille du goban est ".$row['Taille'];
         $brk = 1;
-      }elseif ($partie==$row['idPartie'] && $row['Fin']==NULL && $brk==0) {
+      }elseif ($id==$row['idPartie'] && $row['Fin']==NULL && $brk==0) {
         //recherche de l'id de partie identique
         //TODO:update la table avec le joueurB
         echo "Vous avez rejoins la partie de ".$row['JoueurN'];
