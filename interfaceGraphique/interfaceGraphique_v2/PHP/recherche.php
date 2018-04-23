@@ -5,9 +5,9 @@
       <link rel="stylesheet" type="text/css" href="../CSS/style.css">
       <title>Rencontres-go</title>
     </head>
-    <body>
+    <body onload="form1.reset()">
 
-        <form>
+        <form id="form1">
         <fieldset>
           <legend>Rechercher une partie : </legend>
           <select name="dropdown_taille">

@@ -5,12 +5,12 @@
       <link rel="stylesheet" type="text/css" href="../CSS/style.css">
       <title>Rencontres-go</title>
     </head>
-    <body>
+    <body onload="form1.reset()">
       <?php include 'header.php';?>
       <div id="global">
         <div id="div_formulaire">
 
-          <form action="rejoindre.php" method="post" >
+          <form action="rejoindre.php" method="post" id="form1">
 
           <fieldset>
             <legend>Rejoindre une partie : </legend>
