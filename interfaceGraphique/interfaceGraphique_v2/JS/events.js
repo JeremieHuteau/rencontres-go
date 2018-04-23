@@ -98,4 +98,3 @@ class Events {
             event.handler.call(event.context, this, data));
     }
 }
-
