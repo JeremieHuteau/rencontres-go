@@ -1,0 +1,22 @@
+<form id="formulaire_inscription" action="validationInscription.php" onsubmit="return verificationFormulaireInscription();" method="POST">
+
+  <fieldset>
+    <legend>S'inscrire : </legend>
+
+    <p>Pseudo : </p>
+    <input id="formulaireInscription_Pseudo" type="text" placeholder="pseudo" required/>
+    <p>Email : </p>
+    <input id="formulaireInscription_Email" type="email" placeholder="email" required/>
+    <p>Confirmer votre Email : </p>
+    <input id="formulaireInscription_EmailConfirmation" type="email" placeholder="confirmation email" required/>
+    <p>Mot de passe : </p>
+    <input id="formulaireInscription_Password" type="password" placeholder="password" required/>
+    <p>Confirmer votre mot de passe : </p>
+    <input id="formulaireInscription_PasswordConfirmation" type="password" placeholder="confirmation password" required/>
+    <p>
+      <input id="formulaireInscription_Submit" type="submit" value="S'inscrire"/>
+    </p>
+
+  </fieldset>
+</form>
+
