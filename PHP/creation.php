@@ -10,6 +10,7 @@
   $host='127.0.0.1';
 
   try {
+
     $dbh = new PDO("mysql:host=$host;dbname=$dsn","$user", "$password");
     //TODO:insérer le joueur connecté
     $insertion = "INSERT INTO partie (`Taille`, `Handicap`, `Komi`, `Debut`, `Fin`, `Duree`, `Acces`, `JoueurN`, `JoueurB`, `Vainqueur`)
@@ -20,10 +21,7 @@
     $prepara->execute(array($taille,$confidentialite));
 
     echo "Reussite";
-
-    } catch (PDOException $e) {
-    echo 'Connection failed: ' . $e->getMessage();
+  } catch (PDOException $e) {
+        echo 'Connection failed: ' . $e->getMessage();
   }
-
-
 ?>

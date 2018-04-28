@@ -1,18 +1,17 @@
 <?php
 
   //variables du formulaire qu'on récupère avec post
-  //elles n'existent pas si on ouvre le fichier avec recherche.php 
+  //elles n'existent pas si on ouvre le fichier avec recherche.php
   if(isset($_POST['search_Hote']) && isset($_POST['search_ID'])){
     $hote = $_POST['search_Hote'];
     $id = $_POST['search_ID'];
   }else{
     //reprise de la session
-    session_start();
-    $hote = $_SESSION["nom"];
-    $id = $_SESSION["id"];
+    //session_start();
+    $hote = $_GET["search_Hote"];
+    $id = $_GET["search_ID"];
   }
-
-
+  
   //connexion à la bdd
   $dsn = 'projetweb';
   $user = 'root';

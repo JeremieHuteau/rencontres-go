@@ -1,69 +1,67 @@
-//--MODELE--
-
-class Pre extends Events {
+class Model extends Events {
     constructor() {
         super();
     }
 }
 
-//--VUE--
-
-class PreView extends Events {
+class View extends Events {
     constructor() {
         super();
         this.initialize();
     }
 
     initialize() {
-        //gère le clic sur le bouton de validation
-        //affichage par défaut
-            this.affichageParties();
         //affichage après choix de la taille
-        document.querySelector('select[name="dropdown_taille"]').onclick = () =>
-            this.affichageParties();
+        document.querySelector('select[name="dropdown_taille"]').onclick = () =>{
+            let listerecherche = document.querySelector("#liste");
+            let taillerecherche = document.querySelector('select[name="dropdown_taille"]').value;
+            this.recherche={liste: listerecherche, taille: taillerecherche};
+            this.dispatch("affichageRecherche", this.recherche);
+        }
     }
 
-    affichageParties(){
+    affichage(text){
+        liste.innerHTML = text;
+    }
+
+}
+
+class Controller extends Events {
+    constructor() {
+        super();
+        this.model = new Model();
+        this.view = new View();
+        this.initialize();
+    }
+
+    initialize() {
+        //gestion de l'affichage de la liste de la recherche
+        this.affichageRechercheHandler(this.view, {liste: '<ul id="liste">', taille:0});
+        this.view.on([
+            {events:"affichageRecherche", handler:this.affichageRechercheHandler, context:this}
+        ]);
+    }
+
+    affichageRechercheHandler(view, objet) {
+
         //ouvre requete xml
-        var httpc = new XMLHttpRequest();
-        var url = "recherche.php";
+        let httpc = new XMLHttpRequest();
+        let url = "recherche.php";
         //requete post
         httpc.open("POST", url, true);
         httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-        //récupère les valeurs
-        let liste = document.querySelector("#liste");
-        let taille = document.querySelector('select[name="dropdown_taille"]').value;
-
         // les valeurs sont mises dans une chaine de caractère qu'on va renvoyer en parametre
-        var dataString = "jliste=" + liste + "&jtaille=" + taille;
-
+        var dataString = "jliste=" + objet.liste + "&jtaille=" + objet.taille;
         httpc.send(dataString);
-        httpc.onreadystatechange = function() { //appelle une fonction quand l'état change
+        httpc.onreadystatechange = () => { //appelle une fonction quand l'état change
             if(httpc.readyState == 4 && httpc.status == 200) { // complet et sans erreurs
                 //affiche le texte de résultat dans l'élément qui a comme id resulat
-                liste.innerHTML = this.responseText;
+                this.view.affichage(httpc.responseText);
             }
         }
     }
 
 }
 
-//--CONTROLLEUR--
-
-class PreController extends Events {
-    constructor() {
-        super();
-
-        this.model = new Pre();
-        this.view = new PreView();
-
-        this.initialize();
-    }
-
-    initialize() {
-    }
-
-}
-
-let preC = new PreController();
+let control = new Controller();
