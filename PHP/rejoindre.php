@@ -11,65 +11,46 @@
     $hote = $_GET["search_Hote"];
     $id = $_GET["search_ID"];
   }
-  
+
   //connexion à la bdd
   $dsn = 'projetweb';
   $user = 'root';
   $password = 'root';
   $host='127.0.0.1';
 
-  //variable pour éviter de répéter de rejoindre plusieurs parties
-  //permet aussi de vérifier si on en a rejoint aucune
-  $brk = 0;
-
-  //compteur parce qu'apparement les foreach sont à moitié inutiles...
-  $cpt = 0;
-
   try {
     $dbh = new PDO("mysql:host=$host;dbname=$dsn","$user", "$password");
 
-    //requete de la table utilisateurs
-    $utilisateur = 'SELECT * FROM Utilisateur';
-
-    //on associe les id aux pseudos pour permettre la recherche par pseudo
-    foreach ($dbh->query($utilisateur) as $row) {
-      $tab_utilisateurs[] = array(
-        'id' => $row['idUtil'],
-        'nom' => $row['Pseudo'],
-      );
-      //vérifie si on a le nom d'hote qui correspond a un id d'une partie crée
-      //ça évite de faire deux foreach après
-      if($hote==$tab_utilisateurs[$cpt]['nom']){
-        $hote="okay";
-      }
-      $cpt++;
-    }
 
     //requete de la table partie
-    $partie = 'SELECT * FROM Partie';
+    if($hote != ''){
+      //requete de la table utilisateurs
+      //permet de trouver l'id utilisateur correspondant au pseudo cherché
+      $utilisateur = "SELECT * FROM Utilisateur WHERE Pseudo='$hote'";
 
-    foreach ($dbh->query($partie) as $row) {
-      if($hote=="okay" && $row['Fin']==NULL && $brk==0){
-        //recherche de l'id du joueur identique
-        //TODO:update la table avec le joueurB
-        echo "Vous avez rejoins la partie de ".$row['JoueurN'];
-        echo "<br />L'id de la partie est ".$row['idPartie'];
-        echo "<br />La taille du goban est ".$row['Taille'];
-        $brk = 1;
-      }elseif ($id==$row['idPartie'] && $row['Fin']==NULL && $brk==0) {
-        //recherche de l'id de partie identique
-        //TODO:update la table avec le joueurB
-        echo "Vous avez rejoins la partie de ".$row['JoueurN'];
-        echo "<br />L'id de la partie est ".$row['idPartie'];
-        echo "<br />La taille du goban est ".$row['Taille'];
-        $brk = 1;
-      }
+      $prepara = $dbh->prepare($utilisateur);
+      $prepara->execute();
+      $row = $prepara->fetch();
+      $hote = $row['idUtil'];
+
+      $partie = "SELECT * FROM Partie WHERE JoueurN=$hote AND Fin IS NULL LIMIT 1";
+    }else{
+      $partie = "SELECT * FROM Partie WHERE idPartie=$id AND Fin IS NULL LIMIT 1";
     }
 
-    if($brk==0){
-      //aucune partie correspondant aux criteres de recherche n'a été trouvée
+    $prepara = $dbh->prepare($partie);
+    $prepara->execute();
+    $row = $prepara->fetch();
+
+    if($row==false){
       echo "Il n'y a aucune partie correspondant aux critères";
+    }else{
+      //affichage du résultat qui sera supprimé à terme
+      echo "Vous avez rejoins la partie de ".$row['JoueurN'];
+      echo "<br />L'id de la partie est ".$row['idPartie'];
+      echo "<br />La taille du goban est ".$row['Taille'];
     }
+
   } catch (PDOException $e) {
     //la connexion n'a pas pu se faire
     echo 'Connection failed: ' . $e->getMessage();
