@@ -2,19 +2,16 @@
   <html>
     <head>
       <meta charset="utf-8" />
-      <link rel="stylesheet" type="text/css" href="style.php">
+      <link rel="stylesheet" type="text/css" href="../CSS/style.css">
+      <script type="text/javascript" src="../JS/event.js"></script>
       <title>Rencontres-go</title>
     </head>
-
-    <body>
-
-      <main>
-
+    <body onload="form1.reset() ; form2.reset()">
       <?php include_once 'header.php';?>
-
+      <div id="global">
         <div id="div_formulaire">
 
-          <form action="home.php" method="post" >
+          <form action="home.php" method="post" id="form1">
 
             <fieldset>
               <legend> Se connecter : </legend>
@@ -31,7 +28,7 @@
 
           <?php //include_once 'formulaireInscription.php';?>
 
-          <form action="home.php" method="post" >
+          <form action="home.php" method="post" id="form2">
 
             <fieldset>
               <legend>S'inscrire : </legend>
@@ -50,15 +47,11 @@
 
           </form>
 
-
         </div>
 
         <footer>
           <p>Projet Développement d'applications web - Université de Bourgogne - Groupe 2</p>
         </footer>
-
-      </main>
-
+      </div>
     </body>
-
   </html>

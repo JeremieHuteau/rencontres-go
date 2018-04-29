@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Ilebomonplato</title>
+		<title>Rencontres-go</title>
 		<link rel="stylesheet" href="../CSS/try.css" />
 		<link rel="stylesheet" href="../CSS/goban.css" />
+		<meta name="viewPort" content="width=device-width, initial-scale=1.0 maximum-scale=1.0 minimal-ui">
 	</head>
 
 						<!--Alors oui, j'ai du mettre deux pages CSS différentes, je sais pas si ça vient de mon wamp,
@@ -11,6 +12,9 @@
 
 
 	<body>
+		<div class="map" id="map">
+
+		</div>
 		<?php
 			$test = false;
 
@@ -19,7 +23,7 @@
 			if(isset($_POST['taille']) && ($_POST['taille']==9 OR $_POST['taille']==13 OR $_POST['taille']==19)){
 				$test = Plateau((int)$_POST['taille']);
 			}
-			
+
 			if(!$test){
 				Formulaire();
 			}
@@ -28,7 +32,7 @@
 </html>
 
 
-<?php 
+<?php
 	function Plateau($plateau){
 		echo "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 2343 2343\">";
 		echo "<rect id=\"plateau\" x=\"0\" y=\"0\" width=\"2343\" height=\"2343\" />";
@@ -66,7 +70,7 @@
 				$etoiles[2] = ($colonne==$max-3) ? $position : $etoiles[2];
 
 				if($colonne==$max){
-					echo '<ellipse cx="'.$etoiles[0].'" cy="'.$etoiles[0].'" rx="10" ry="10" />';
+					echo '<ellipse id="ellipse" cx="'.$etoiles[0].'" cy="'.$etoiles[0].'" rx="10" ry="10" />';
 					echo '<ellipse cx="'.$etoiles[0].'" cy="'.$etoiles[1].'" rx="10" ry="10" />';
 					echo '<ellipse cx="'.$etoiles[0].'" cy="'.$etoiles[2].'" rx="10" ry="10" />';
 					echo '<ellipse cx="'.$etoiles[1].'" cy="'.$etoiles[0].'" rx="10" ry="10" />';
@@ -84,7 +88,7 @@
 			/*Un lien pour pouvoir réessayer sans avoir à réecrire l'url à chaque essai.
 			Si le goban a été dessiné, on met test à true, pour empecher le formulaire de s'afficher*/
 
-		echo "<a href=\"index.php\">Recommencer</a>";
+		echo "<a href=\"goban.php\">Recommencer</a>";
 
 		return true;
 	}
@@ -101,5 +105,5 @@
 			<input type="submit" value="Valider"/>
 		</form>
 	<?php
-	}	
+	}
 ?>

@@ -1,82 +1,129 @@
-*
-{
-	font-family: arial;
-}
-
 body
 {
-	background-color: silver;
-}
-
-main
-{
-	width: 1000px;
-	margin-left: auto;
-	margin-right: auto;
-	background-color: white;
-	padding: 1em;
+	background-attachment:fixed;
+	background-size: 100%;
+	background-image: url("../Images/background.jpg");
+	font-family: Arial;
+	margin: 10px;
+	margin-bottom: 50px;
+	padding: 0px;
+	position: relative;
 }
 
 header
 {
-	background-color: silver;
 	text-align: center;
-	padding: 1em;
-	border-radius: 15px;
-}
-
-#conteneur
-{
-	width: 100%;
-	margin-top: 1em;
-}
-
-nav
-{
-	float: left;
-	width: 200px;
-	background-color: red;
-	padding: 1em;
-	border-radius: 15px;
-}
-
-section
-{
-	float: left;
-	width: 750px;
-	background-color: yellow;
-	margin-left: 1em;
-	border-radius: 15px;
-}
-
-article
-{
-	font-style: italic;;
-	margin: 1em;
-          border:solid;
+	margin-top: 5px;
+	margin : 0px;
+	opacity: 0.8;
 }
 
 footer
 {
-	background-color: silver;
+	width: 84%;
+	background-color: black;
+	color: white;
+	position: fixed;
 	text-align: center;
-	padding: 1em;
-	border-radius: 15px;
+	top: 95%;
+	bottom: 0;
+	opacity: 0.8;
+}
+
+nav > ul
+{
+	margin:0px;
+	padding:0px;
+}
+
+nav > ul > li
+{
+	display: inline-block; /*ici*/
+	width : 16%;
+	padding : 20px;
+	position: relative;
+}
+
+nav li
+{
+	list-style-type:none;
+	text-align: left;
+}
+
+.onglet
+{
+	display:none;
+}
+
+nav > ul::after
+{
+	content: "";
+	display: block;
+	clear: both;
+}
+
+nav a
+{
+	display: inline-block;
+	text-decoration: none;
+
+}
+
+nav > ul > li > a
+{
+	color: white;
+}
+
+nav li:hover .onglet
+{
+	display:inline-block;
+	position:absolute;
+	top:100%;
+	left:0px;
+	padding:0px;
+	z-index:100000;
+}
+
+.onglet li
+{
+	border-bottom: 1px solid #CCC;
+}
+
+.onglet li a
+{
+	padding: 15px 30px;
+	font-size: 13px;
+	color: white;
+	width: 100%;
+}
+
+.onglet li:hover a
+{
+	color: white;
+	font-weight: bold;
+}
+
+nav > ul > li:hover a
+{
+	/*padding: 20px 42% 20px 42%;*/
 }
 
 .bouton_header
 {
-	display:inline-block;
-	width:150px;
-	line-height:50px;
-	text-align:center;
-	vertical-align:middle;
-	color:black;
-	text-decoration:none;
-	border:solid;
+	background-color: black;
 }
 
-div
+.bouton_header .onglet
+{
+	background-color: black;
+}
+
+.bouton_header .onglet li:hover
+{
+	background-color: grey;
+}
+
+#div_formulaire
 {
 	display:inline-flex;
 }
@@ -96,5 +143,34 @@ div
 fieldset
 {
 	height:95%;
-	width:75%;
+	width:400px;
+	color: white;
+}
+
+legend
+{
+	color: white;
+}
+
+h3
+{
+	text-decoration: underline #BDBDBD;
+	color: #BDBDBD;
+}
+
+img
+{
+	background-color: #fcba54;
+	margin: 20px 20px 0px 20px;
+}
+
+#global
+{
+	position: relative;
+	background-color: black;
+	margin: 6% auto;
+	width: 85%;
+	opacity: 0.8;
+	color: white;
+	padding: 10px 15px 10px 15px;
 }

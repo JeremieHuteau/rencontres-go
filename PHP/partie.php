@@ -2,12 +2,14 @@
   <html>
     <head>
       <meta charset="utf-8" />
-      <link rel="stylesheet" type="text/css" href="style.php">
+      <link rel="stylesheet" type="text/css" href="../CSS/style.css">
+      <link rel="stylesheet" href="../CSS/try.css" />
+  		<link rel="stylesheet" href="../CSS/goban.css" />
       <title>Rencontres-go</title>
     </head>
     <body>
-      <main>
-        <?php include_once 'header.php';?>
+      <?php include_once 'header.php';?>
+      <div id="global ">
         <div id="div_Partie">
           <p>
             Chat
@@ -15,7 +17,7 @@
         </div>
         <div id="div_Partie">
           <p>
-            Goban
+            <?php include_once 'goban.php';?>
           </p>
         </div>
         <div id="div_Partie">
@@ -26,6 +28,6 @@
         <footer>
           <p>Projet Développement d'applications web - Université de Bourgogne - Groupe 2</p>
         </footer>
-      </main>
+      </div>
     </body>
   </html>
