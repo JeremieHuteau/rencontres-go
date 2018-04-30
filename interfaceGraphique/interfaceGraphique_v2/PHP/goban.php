@@ -5,13 +5,14 @@
 		<link rel="stylesheet" href="../CSS/try.css" />
 		<link rel="stylesheet" href="../CSS/goban.css" />
 		<meta name="viewPort" content="width=device-width, initial-scale=1.0 maximum-scale=1.0 minimal-ui">
+		<script src="../JS/goban.js"></script>
 	</head>
 
 						<!--Alors oui, j'ai du mettre deux pages CSS différentes, je sais pas si ça vient de mon wamp,
 						mais ça ne marche pas si je les rassemble-->
 
 
-	<body>
+	<body onload="Init()">
 		<div class="map" id="map">
 
 		</div>
@@ -47,6 +48,8 @@
 			Pour du 9x9 il n'y a que 4 étoiles, sur les 3eme lignes en diagonale depuis les coins, alors que pour 13 et 19,
 			il y a 9 étoiles, à 4 lignes en diagonale depuis les coins, au milieu de chaque côté du carré dessiné par les étoiles
 			et au plein centre du goban*/
+
+			echo "<ellipse id='previewPion' cx='0' cy='0' rx='50' ry='50' style='opacity:0.5'/>";
 
 		for($colonne = 0; $colonne <= $max; $colonne++){
 			$position = 60 + $colonne * 2223 / $max;

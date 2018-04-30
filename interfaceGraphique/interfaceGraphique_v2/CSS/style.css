@@ -83,11 +83,6 @@ nav li:hover .onglet
 	z-index:100000;
 }
 
-.onglet li
-{
-	border-bottom: 1px solic #CCC;
-}
-
 .onglet li a
 {
 	padding: 15px 30px;
@@ -132,6 +127,7 @@ nav > ul > li:hover a
 	border: solid;
 	height:50%;
 	width:30%;
+	display:inline-flex;
 }
 
 #connexion
@@ -172,4 +168,10 @@ img
 	opacity: 0.8;
 	color: white;
 	padding: 10px 15px 10px 15px;
+}
+
+#tchat
+{
+	max-width: 100%;
+	max-height: 100%
 }

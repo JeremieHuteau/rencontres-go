@@ -9,10 +9,10 @@
     </head>
     <body>
       <?php include_once 'header.php';?>
-      <div id="global ">
+      <div id="global">
         <div id="div_Partie">
           <p>
-            Chat
+            <?php include_once 'indexTchat.php';?>
           </p>
         </div>
         <div id="div_Partie">
@@ -25,9 +25,10 @@
             Chrono + derniers coups joués
           </p>
         </div>
+      </div>
         <footer>
           <p>Projet Développement d'applications web - Université de Bourgogne - Groupe 2</p>
         </footer>
-      </div>
+      
     </body>
   </html>
