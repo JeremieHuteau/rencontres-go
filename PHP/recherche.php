@@ -39,7 +39,7 @@
 
     foreach ($dbh->query($partie) as $row) {
 
-      echo "<li><a href=\"rejoindre.php?search_Hote=" . $row['JoueurN'] . "&search_ID=" . $row['idPartie'] . "\">";
+      echo "<a href=\"rejoindre.php?search_Hote=" . $row['JoueurN'] . "&search_ID=" . $row['idPartie'] . "\"><li>";
       echo "ID : ".$row['idPartie'];
       echo " Taille du Goban : ".$row['Taille'];
 
@@ -54,7 +54,7 @@
         $cpt++;
       }
 
-      echo "</a></li>";
+      echo "</li></a>";
     }
 
   } catch (PDOException $e) {
