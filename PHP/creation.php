@@ -13,7 +13,7 @@
 
     $dbh = new PDO("mysql:host=$host;dbname=$dsn","$user", "$password");
     //TODO:insérer le joueur connecté
-    $insertion = "INSERT INTO partie (`Taille`, `Handicap`, `Komi`, `Debut`, `Fin`, `Duree`, `Acces`, `JoueurN`, `JoueurB`, `Vainqueur`)
+    $insertion = "INSERT INTO partie (Taille, Handicap, Komi, Debut, Fin, Duree, Acces, JoueurN, JoueurB, Vainqueur)
     VALUES (?,0,'6.5',NOW(),NULL,'01:00:00',?,1,NULL,NULL)";
 
     //ajoute la taille et la confidentialite a la requete
