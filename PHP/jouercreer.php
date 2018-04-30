@@ -77,6 +77,5 @@
         </footer>
       </div>
     </body>
-    <script src="../JS/events.js"></script>
-    <script src="../JS/gestionparties.js"></script>
+
   </html>

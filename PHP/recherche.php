@@ -4,17 +4,16 @@
   $liste = $_POST['jliste'];
   $taille = $_POST['jtaille'];
 
-  //connexion à la bdd
-  $dsn = 'projetweb';
-  $user = 'root';
-  $password = 'root';
-  $host = '127.0.0.1';
+  //include 'connexionBD.php';
+  $dsn = 'ag044096';
+  $user = 'ag044096';
+  $password = 'ag044096';
+  $hst='172.31.21.41';
 
   try {
-    $dbh = new PDO("mysql:host=$host;dbname=$dsn","$user", "$password");
-
+    $dbh = new PDO("mysql:host=$hst;dbname=$dsn","$user", "$password");
     //requete de la table utilisateurs
-    $utilisateur = 'SELECT * FROM Utilisateur';
+    $utilisateur = 'SELECT * FROM utilisateur';
 
     //on associe les id aux pseudos pour permettre la recherche par pseudo
     foreach ($dbh->query($utilisateur) as $row) {
@@ -26,21 +25,21 @@
 
     //recherche en focntion de la taille du goban
     if($taille==0){
-      $partie = "SELECT * FROM Partie WHERE Acces='Public' AND Fin IS NULL";
+      $partie = "SELECT * FROM partie WHERE Acces='Public' AND Fin IS NULL";
     }
     if($taille==9){
-      $partie = "SELECT * FROM Partie WHERE Taille='9' AND Acces='Public' AND Fin IS NULL";
+      $partie = "SELECT * FROM partie WHERE Taille='9' AND Acces='Public' AND Fin IS NULL";
     }
     if($taille==13){
-      $partie = "SELECT * FROM Partie WHERE Taille='13' AND Acces='Public' AND Fin IS NULL";
+      $partie = "SELECT * FROM partie WHERE Taille='13' AND Acces='Public' AND Fin IS NULL";
     }
     if($taille==19){
-      $partie = "SELECT * FROM Partie WHERE Taille='19' AND Acces='Public' AND Fin IS NULL";
+      $partie = "SELECT * FROM partie WHERE Taille='19' AND Acces='Public' AND Fin IS NULL";
     }
 
     foreach ($dbh->query($partie) as $row) {
 
-      echo "<a href=\"rejoindre.php?search_Hote=" . $row['JoueurN'] . "&search_ID=" . $row['idPartie'] . "\"><li>";
+      echo "<li><a href=\"rejoindre.php?search_Hote=" . $row['JoueurN'] . "&search_ID=" . $row['idPartie'] . "\">";
       echo "ID : ".$row['idPartie'];
       echo " Taille du Goban : ".$row['Taille'];
 
@@ -55,7 +54,7 @@
         $cpt++;
       }
 
-      echo "</li></a>";
+      echo "</a></li>";
     }
 
   } catch (PDOException $e) {
