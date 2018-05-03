@@ -10,7 +10,7 @@
       <div id="global">
         <div id="div_formulaire">
 
-          <form action="creation.php" method="post" id="form1">
+          <form action="../PHP/creation.php" method="post" id="form1">
 
           <fieldset>
             <legend>Créer une partie : </legend>

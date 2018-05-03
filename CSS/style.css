@@ -30,6 +30,7 @@ footer
 	opacity: 0.8;
 }
 
+
 nav > ul
 {
 	margin:0px;
@@ -103,10 +104,12 @@ nav li:hover .onglet
 	font-weight: bold;
 }
 
-nav > ul > li:hover a
+/*nav > ul > li:hover a 
 {
-	/*padding: 20px 42% 20px 42%;*/
-}
+	font-weight : bold;
+}*/
+
+
 
 .bouton_header
 {

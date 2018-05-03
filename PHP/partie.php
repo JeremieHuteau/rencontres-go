@@ -8,7 +8,7 @@
       <title>Rencontres-go</title>
     </head>
     <body>
-      <?php include_once 'header.php';?>
+      <?php include_once '../Interface/header.php';?>
       <div id="global ">
         <div id="div_Partie">
           <p>
@@ -17,7 +17,7 @@
         </div>
         <div id="div_Partie">
           <p>
-            <?php include_once 'goban.php';?>
+            <?php include_once '../Interface/goban.php';?>
           </p>
         </div>
         <div id="div_Partie">

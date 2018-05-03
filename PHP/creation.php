@@ -4,14 +4,12 @@
   $taille = $_POST['taille-Goban'];
 
   //connexion à la bdd
-  //include 'connexionBD.php';
     $dsn = 'ag044096';
     $user = 'ag044096';
     $password = 'ag044096';
     $host='172.31.21.41';
 
   try {
-
     $dbh = new PDO("mysql:host=$host;dbname=$dsn","$user", "$password");
     
     //TODO:insérer le joueur connecté

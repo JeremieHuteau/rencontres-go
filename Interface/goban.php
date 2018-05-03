@@ -15,19 +15,7 @@
 		<div class="map" id="map">
 
 		</div>
-		<?php
-			$test = false;
 
-				/*Test est là pour vérifier si le goban a été dessiné ou non. Si non, on affiche le formulaire*/
-
-			if(isset($_POST['taille']) && ($_POST['taille']==9 OR $_POST['taille']==13 OR $_POST['taille']==19)){
-				$test = Plateau((int)$_POST['taille']);
-			}
-
-			if(!$test){
-				Formulaire();
-			}
-		?>
 	</body>
 </html>
 
@@ -93,17 +81,4 @@
 		return true;
 	}
 
-	function Formulaire(){
-	?>
-		<form method="post" action="goban.php">
-			<p>Sélectionnez la taille de goban désirée :<br/>
-			<input type="radio" name="taille" value="9" id="9"/><label for="9">9x9</label><br/>
-			<input type="radio" name="taille" value="13" id="13"/><label for="13">13x13</label><br/>
-			<input type="radio" name="taille" value="19" id="19"/><label for="19">19x19</label>
-			</p>
-
-			<input type="submit" value="Valider"/>
-		</form>
-	<?php
-	}
 ?>

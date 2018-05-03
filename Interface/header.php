@@ -16,7 +16,7 @@
         </ul>
       </li>
       <li class="bouton_header">
-          <a href="regarder.php">Regarder</a>
+          <a href="jouerregarder.php">Regarder</a>
       </li>
       <li class="bouton_header">
           <a>Règles</a>

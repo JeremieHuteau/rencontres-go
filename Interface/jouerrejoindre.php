@@ -10,7 +10,7 @@
       <div id="global">
         <div id="div_formulaire">
 
-          <form action="rejoindre.php" method="post" id="form1">
+          <form action="../PHP/rejoindre.php" method="post" id="form1">
 
           <fieldset>
             <legend>Rejoindre une partie : </legend>

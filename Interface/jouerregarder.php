@@ -10,7 +10,7 @@
       <div id="global">
         <div id="div_formulaire">
 
-          <form action="partie.php" method="post" id="form1">
+          <form action="../PHP/partie.php" method="post" id="form1">
 
             <fieldset>
               <legend> Regarder une partie : </legend>
@@ -41,7 +41,24 @@
 
           </form>
 
-          <?php include_once 'recherche.php';?>
+          <form id="form1">
+          <fieldset>
+            <legend>Regarder une partie publique : </legend>
+            <select name="dropdown_taille">
+              <option value="0">Taille indifférente</option>
+              <option value="9">9 x 9</option>
+              <option value="13">13 x 13</option>
+              <option value="19">19 x 19</option>
+            </select>
+  
+            <nav style="height: 100px; width: 350px; overflow:hidden; overflow-y:scroll; background-color: grey;" >
+                <ul id="liste">
+  
+                </ul>
+            </nav>
+            
+          </fieldset>
+        </form>
 
         </div>
         <footer>
@@ -49,4 +66,6 @@
         </footer>
       </div>
     </body>
+    <script src="../JS/events.js"></script>
+    <script src="../JS/regarderpartie.js"></script>
   </html>

@@ -46,7 +46,7 @@ class Controller extends Events {
 
         //ouvre requete xml
         let httpc = new XMLHttpRequest();
-        let url = "../PHP/recherche.php";
+        let url = "../PHP/rechercherregarder.php";
         //requete post
         httpc.open("POST", url, true);
         httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

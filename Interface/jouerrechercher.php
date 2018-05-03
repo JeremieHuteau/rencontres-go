@@ -9,7 +9,7 @@
 
         <form id="form1">
         <fieldset>
-          <legend>Rechercher une partie : </legend>
+          <legend>Rejoindre une partie publique : </legend>
           <select name="dropdown_taille">
             <option value="0">Taille indifférente</option>
             <option value="9">9 x 9</option>
@@ -22,6 +22,7 @@
 
               </ul>
           </nav>
+
         </fieldset>
       </form>
 
