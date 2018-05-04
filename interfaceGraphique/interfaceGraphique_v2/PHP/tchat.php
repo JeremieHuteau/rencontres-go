@@ -1,6 +1,7 @@
 <?php
   session_start();
-  if(!isset($_SESSION["pseudo"]) || empty($_SESSION["pseudo"]))
+  $_SESSION["user"]="Jojo";
+  if(!isset($_SESSION["user"]) || empty($_SESSION["user"]))
     header("location:indexTchat.php");
   include "connect.php";
 ?>
@@ -24,9 +25,8 @@
       <title>Rencontres-go</title>
     </head>
     <body>
-      <h1>Mon tchat, connecté en tant que <?php echo $_SESSION["pseudo"]; ?></h1>
       <div id="tchat">
-        <textarea name="tchatText" id="" cols="30" rows="10">
+        <textarea id="tchatText" cols="45" rows="10" disabled>
           <?php
             $sql = "SELECT * FROM messages ORDER BY date DESC LIMIT 15";
             $req = $dbh->query($sql);
@@ -38,28 +38,26 @@
             for($i=count($d)-1 ; $i>=0 ; $i--)
             {
               ?>
-                <?php echo $d[$i]["pseudo"]; ?> (<?php echo date("d/m/Y H:i:s", $d[$i]["date"]); ?>) : <?php echo htmlentities($d[$i]["message"]); ?>
+                <?php echo $d[$i]["user"]; ?> (<?php echo date("d/m/Y H:i:s", $d[$i]["date"]); ?>) : <?php echo htmlentities($d[$i]["message"]); ?>
               <?php
             }
           ?>
         </textarea>
 
-      <div id="tchatForm" style="bottom:0;width:100%">
-      <form action="#" method="post">
-        <div style="margin-right:110px;">
-          <textarea name="message" style="width:100%;"></textarea>
+        <div id="tchatForm" style="bottom:0;width:100%">
+          <form action="#" method="post">
+          <div style="margin-right:110px;">
+            <textarea name="message" style="width:100%;"></textarea>
+          </div>
+          <div style="top:12px; right:0;">
+            <input type="submit" value="Envoyer" onclick="getMessages();"/>
+          </div>
+          </form>
         </div>
-        <div style="position:absolute; top:12px; right:0;">
-          <input type="submit" value="Envoyer" />
-        </div>
-
-        </form>
-
-        </div>
-
-        <footer>
-            <p>Projet Développement d'applications web - Université de Bourgogne - Groupe 2</p>
-        </footer>
       </div>
+      <footer>
+          <p>Projet Développement d'applications web - Université de Bourgogne - Groupe 2</p>
+      </footer>
+      
     </body>
   </html>

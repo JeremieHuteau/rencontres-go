@@ -1,13 +1,11 @@
 var url="../PHP/tchatAjax.php";
 var lastid = 0;
-var timer = null;//setInterval(getMessages,500);
-
+var timer = setInterval(getMessages,500); 
 
 
 $(function(){
     $("#tchatForm form").submit(function()
                                 {
-                                    console.log("sendMessage");
                                     var message = $("#tchatForm form textarea").val();
                                     $.ajax(
                                     {
@@ -31,7 +29,7 @@ $(function(){
                                                     },
                                         error : function(resultat,statut,erreur)
                                         {
-                                            console.log("Erreur :"+resultat+statut+erreur);
+                                            alert("Erreur :"+resultat+statut+erreur);
                                         }
                                     },"json");
                                     return false;
@@ -42,7 +40,7 @@ $(function(){
 function getMessages()
 {
     $.ajax(
-        {   
+        {
             data : "action=getMessages&lastid="+lastid,
             url : url,
             type  : "POST",
@@ -51,17 +49,17 @@ function getMessages()
                         {
                             if(data.erreur == "ok")
                             {
-                                $("#tchatText").append(data.result[0]["user"]);
+                                $("#tchat").append(data.result);
+                                lastid = data.lastid;
                             }
                             else
                             {
                                 alert(data.erreur);
                             }
-                            lastid = data.lastid;
                         },
             error : function(resultat,statut,erreur)
             {
-                console.log("Erreur :"+resultat+statut+erreur);
+                alert("Erreur :"+resultat+statut+erreur);
             }
         },"json");
         return false;

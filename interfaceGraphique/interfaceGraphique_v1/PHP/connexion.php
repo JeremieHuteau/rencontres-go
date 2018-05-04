@@ -10,7 +10,33 @@
 
       <main>
 
-      <?php include_once 'header.php';?>
+        <header>
+          <div class="bouton_header">
+            <p>
+              <a href="home.php">Accueil</a>
+            </p>
+          </div>
+          <div class="bouton_header">
+            <p>
+              <a href="jouer.php">Jouer</a>
+            </p>
+          </div>
+          <div class="bouton_header">
+            <p>
+              <a href="regarder.php">Regarder</a>
+            </p>
+          </div>
+          <div class="bouton_header">
+            <p>
+              <a href="regles.php">Règles</a>
+            </p>
+          </div>
+          <div class="bouton_header">
+            <p>
+              <a href="connexion.php">Connexion</a>
+            </p>
+          </div>
+        </header>
 
         <div id="div_formulaire">
 
@@ -28,8 +54,6 @@
             </fieldset>
 
           </form>
-
-          <?php //include_once 'formulaireInscription.php';?>
 
           <form action="home.php" method="post" >
 
@@ -49,7 +73,6 @@
             </fieldset>
 
           </form>
-
 
         </div>
 

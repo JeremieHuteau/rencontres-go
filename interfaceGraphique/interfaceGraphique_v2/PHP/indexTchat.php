@@ -1,8 +1,8 @@
 <?php
-  if(!empty($_POST) && isset($_POST["pseudo"]) && !empty($_POST["pseudo"]))
+  if(!empty($_POST) && isset($_POST["user"]) && !empty($_POST["user"]))
   {
     session_start();
-    $_SESSION["pseudo"] = $_POST["pseudo"];
+    $_SESSION["user"] = $_POST["user"];
     header("location:tchat.php");
   }
 ?>
@@ -15,7 +15,7 @@
     </head>
     <body>
       <form action=indexTchat.php method="post">
-        Pseudo : <input type="text" name="pseudo" />
+        Pseudo : <input type="text" name="user" />
         <input type="submit" value="tchater" onclick="<?php include_once 'tchat.php'; ?>"/>
       </form>
     <footer>

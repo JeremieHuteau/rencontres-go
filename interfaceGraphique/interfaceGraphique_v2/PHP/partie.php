@@ -12,7 +12,7 @@
       <div id="global">
         <div id="div_Partie">
           <p>
-            <?php include_once 'indexTchat.php';?>
+            <?php include_once 'tchat.php';?>
           </p>
         </div>
         <div id="div_Partie">
