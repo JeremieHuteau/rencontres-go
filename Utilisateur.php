@@ -23,6 +23,16 @@
       return $res["idUtil"];
     }
 
+    public function recupInfos($id)
+    {
+      $req = $this->bdd->prepare("SELECT * FROM Utilisateur, Profil WHERE idUtil=? AND idUtil=Util");
+      $req->execute(array($id));
+
+      $res = $req->fetch();
+
+      return $res;
+    }
+
     // Insertion d un utilisateur dans la bdd
     public function insertUser($pseudo,$email,$password)
     {
@@ -103,21 +113,23 @@
 
       if($res3["nb"]==0)
       {
-        return 3;
+        return [3,-1];
       }
 
-      $req = $this->bdd->prepare("SELECT Password FROM Utilisateur WHERE Mail=?");
+      $req = $this->bdd->prepare("SELECT idUtil, Password FROM Utilisateur WHERE Mail=?");
       $req->execute(array($mail));
 
       $res = $req->fetch();
       $hash = $res["Password"];
 
+      $id = $res["idUtil"];
+
       if(password_verify($pass,$hash))
       {
-        return 0;
+        return [0,$id];
       }
 
-      return 2;
+      return [2,-1];
     }
 
     public function confirmationInscription($cle,$mail)
