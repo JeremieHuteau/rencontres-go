@@ -2,35 +2,35 @@
   <nav>
     <ul>
       <li class="bouton_header">
-          <a href="home.php">Accueil</a>
+          <a href="home.php" name="ref">Accueil</a>
       </li>
       <li class="bouton_header">
-        <a>Jouer</a>
+        <a name="ref">Jouer</a>
         <ul class="onglet">
           <li>
-            <a href="creation.php">Créer une partie</a>
+            <a href="creation.php" name="ref">Créer une partie</a>
           </li>
           <li>
-            <a href="rejoindre.php">Rejoindre une partie</a>
+            <a href="rejoindre.php" name="ref">Rejoindre une partie</a>
           </li>
         </ul>
       </li>
       <li class="bouton_header">
-          <a href="regarder.php">Regarder</a>
+          <a href="regarder.php" name="ref">Regarder</a>
       </li>
       <li class="bouton_header">
-          <a>Règles</a>
+          <a name="ref">Règles</a>
           <ul class="onglet">
             <li>
-              <a href="regles_Go.php">Règles du Go</a>
+              <a href="regles_Go.php" name="ref">Règles du Go</a>
             </li>
             <li>
-              <a href="regles_tchat.php">Règles du tchat</a>
+              <a href="regles_tchat.php" name="ref">Règles du tchat</a>
             </li>
           </ul>
       </li>
       <li class="bouton_header">
-          <a href="connexion.php">
+          <a href="connexion.php" name="ref">
             <?php
             $utilisateurConnecte = false;
             if ($utilisateurConnecte == true) :
