@@ -20,8 +20,6 @@
     $prepara = $dbh->prepare($insertion);
     $prepara->execute(array($taille,$confidentialite));
 
-    var_dump($prepara);
-
     echo "Reussite";
   } catch (PDOException $e) {
         echo 'Connection failed: ' . $e->getMessage();

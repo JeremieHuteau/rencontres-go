@@ -59,7 +59,7 @@
 
 
         // Envoi mail avec lien vers la page de confirm avec mail et cle
-        $lien = "https://ufrsciencestech.u-bourgogne.fr/~ag044096/ConnexionProjet"."/confirmationInscription.php?mail=".$email."&cle=".$cle;
+        $lien = "https://ufrsciencestech.u-bourgogne.fr/~ag044096/lol/PHP"."/confirmationInscription.php?mail=".$email."&cle=".$cle;
 
         $to      = $email;
         $subject = 'Inscription Go';

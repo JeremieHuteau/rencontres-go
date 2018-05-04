@@ -39,7 +39,7 @@
 
     foreach ($dbh->query($partie) as $row) {
 
-      echo "<a href=\"../PHP/rejoindre.php?search_Hote=" . $row['JoueurN'] . "&search_ID=" . $row['idPartie'] . "\"><li>";
+      echo "<a href=\"../PHP/regarder.php?search_Hote=" . $row['JoueurN'] . "&search_ID=" . $row['idPartie'] . "\"><li>";
       echo "<b>ID partie :</b> ".$row['idPartie'];
       echo "<b> Taille du Goban :</b> ".$row['Taille'];
 

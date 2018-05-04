@@ -10,7 +10,7 @@
       <div id="global">
         <div id="div_formulaire">
 
-          <form action="../PHP/partie.php" method="post" id="form1">
+          <form action="../PHP/regarder.php" method="post" id="form1">
 
             <fieldset>
               <legend> Regarder une partie : </legend>
@@ -28,37 +28,17 @@
                  </label>
                </p>
                <p>Nom d'un des joueurs : </p>
-               <input type="search" size="20" maxlength="40" id="search_Hote" />
-               <p>
-                 <input type="submit" value="Rechercher" id="bouton_Rechercher_Partie" />
-               </p>
+               <input type="text" size="20" maxlength="40" name="search_Hote_regarder" />
                <p>ou ID de la partie : </p>
-               <input type="search" size="20" maxlength="40" id="search_ID" />
+               <input type="text" size="20" maxlength="40" name="search_ID_regarder" />
                <p>
-                 <input type="submit" value="Rechercher" id="bouton_Rechercher_Partie" />
+                 <input type="submit" value="Rechercher" id="bouton_Rechercher" />
                </p>
             </fieldset>
 
-          </form>
+          </form>       
 
-          <form id="form1">
-          <fieldset>
-            <legend>Regarder une partie publique : </legend>
-            <select name="dropdown_taille">
-              <option value="0">Taille indifférente</option>
-              <option value="9">9 x 9</option>
-              <option value="13">13 x 13</option>
-              <option value="19">19 x 19</option>
-            </select>
-  
-            <nav style="height: 100px; width: 350px; overflow:hidden; overflow-y:scroll; background-color: grey;" >
-                <ul id="liste">
-  
-                </ul>
-            </nav>
-            
-          </fieldset>
-        </form>
+          <?php include 'regarderrecherche.php';?>
 
         </div>
         <footer>
@@ -66,6 +46,5 @@
         </footer>
       </div>
     </body>
-    <script src="../JS/events.js"></script>
-    <script src="../JS/regarderpartie.js"></script>
+
   </html>
