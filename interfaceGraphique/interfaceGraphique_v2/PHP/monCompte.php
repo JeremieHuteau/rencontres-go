@@ -1,3 +1,12 @@
+<?php
+  session_start();
+  include("connect.php");
+  $sql = "SELECT Theme FROM profil WHERE Utilisateur='1'";
+  $req = $dbh->prepare($sql);
+  $req->execute();
+  $theme = $req->fetch(PDO::FETCH_ASSOC);
+  $theme = $theme["Theme"];
+?>  
 <DOCTYPE html>
   <html>
     <head>
@@ -5,8 +14,14 @@
       <link rel="stylesheet" type="text/css" href="../CSS/style.css">
       <title>Rencontres-go</title>
       <script type="text/javascript" src="../JS/theme.js"></script>
+      <script
+			  src="https://code.jquery.com/jquery-3.3.1.js"
+			  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous">
+        </script>
     </head>
-    <body>
+    <body onload="changeColor();">
+      <input type="hidden" id="theme" value="<?=$theme?>"/>
       <?php include 'header.php';?>
       <div id="global">
         <div id="div_formulaire">
@@ -26,14 +41,20 @@
               <p>
                 Thème :
                 <select name="dropdown_theme">
-                  <option value="sombre" onclick="changeColor('black', 'white');" style="background-color : black; color:white;">Sombre</option>
-                  <option value="clair" onclick="changeColor('white', 'black');" >Clair</option>
-                  <option value="original" onclick="changeColor('rgb(237,176,95)', 'black');" style="background-color : rgb(237,176,95); color:black;">Original</option>
+                  <option value="sombre" onclick="changeCoul('Theme1'); "style="background-color : black; color:white;">
+                  Sombre
+                  </option>
+                  <option value="clair" onclick="changeCoul('Theme2');"style="background-color : white; color:black;">
+                  Clair
+                  </option>
+                  <option value="original" onclick="changeCoul('Theme3'); " style="background-color : rgb(237,176,95); color:black;">
+                  Original
+                  </option>
                 </select>
               </p>
 
           </fieldset>
-
+          
         </form>
 
         </div>

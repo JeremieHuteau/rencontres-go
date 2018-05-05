@@ -1,6 +1,24 @@
-function changeColor(coul1, coul2)
+function changeColor()
         {
-          //noir = 1   blanc =2
+            var theme = document.getElementById("theme").value;
+            var coul1='';
+            var coul2='';
+            if (theme == "Theme1")
+            {
+            coul1 = 'black';
+            coul2 = 'white';
+            }
+            if (theme == "Theme2")
+            {
+            coul1 = 'white';
+            coul2 = 'black';
+            }
+            if (theme == "Theme3")
+            {
+            coul1 = 'rgb(237,176,95)';
+            coul2 = 'black';
+            }
+            //noir = 1   blanc =2
             var element = 0;
             var i=0;
             document.querySelector("footer").style.backgroundColor = coul1;
@@ -43,4 +61,23 @@ function changeColor(coul1, coul2)
             document.querySelector("#global").style.backgroundColor = coul1;
             document.querySelector("#global").style.color = coul2;
 
+        }
+
+        function changeCoul(Theme)
+        {
+            document.getElementById("theme").value = Theme;
+            changeColor();
+            $.ajax({
+                type : "POST",
+                url: "changeCouleur.php",
+                data: "theme="+Theme,
+                success : function(data) 
+                {
+                 alert(data);
+                },
+                error: function(resultat,statut,erreur) 
+                {
+                  alert("Erreur : "+resultat+statut+erreur);
+                }
+              });
         }

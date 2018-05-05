@@ -21,8 +21,8 @@ header
 footer
 {
 	width: 84%;
-	background-color: black;
-	color: white;
+	background-color: var(--coul1);
+	color: var(--coul2);
 	position: fixed;
 	text-align: center;
 	top: 95%;
@@ -70,7 +70,7 @@ nav a
 nav > ul > li > a
 {
 	padding: 30px 42%;
-	color: white;
+	color: var(--coul2);
 }
 
 nav li:hover .onglet
@@ -87,13 +87,13 @@ nav li:hover .onglet
 {
 	padding: 15px 30px;
 	font-size: 13px;
-	color: white;
+	color: var(--coul2);
 	width: 100%;
 }
 
 .onglet li:hover a
 {
-	color: white;
+	color: var(--coul2);
 	font-weight: bold;
 }
 
@@ -104,12 +104,12 @@ nav > ul > li:hover a
 
 .bouton_header
 {
-	background-color: black;
+	background-color: var(--coul1);
 }
 
 .bouton_header .onglet
 {
-	background-color: black;
+	background-color: var(--coul1);
 }
 
 .bouton_header .onglet li:hover
@@ -139,12 +139,12 @@ fieldset
 {
 	height:95%;
 	width:400px;
-	color: white;
+	color: var(--coul2);
 }
 
 legend
 {
-	color: white;
+	color: var(--coul2);
 }
 
 h3
@@ -162,11 +162,11 @@ img
 #global
 {
 	position: relative;
-	background-color: black;
+	background-color: var(--coul1);
 	margin: 6% auto;
 	width: 85%;
 	opacity: 0.8;
-	color: white;
+	color: var(--coul2);
 	padding: 10px 15px 10px 15px;
 }
 
@@ -175,3 +175,10 @@ img
 	max-width: 100%;
 	max-height: 100%
 }
+
+:root 
+{
+	--coul1: black;
+	--coul2: white;
+}
+   
