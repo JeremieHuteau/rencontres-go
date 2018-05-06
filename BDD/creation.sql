@@ -36,8 +36,8 @@ CREATE TABLE Partie(
 	Taille ENUM('9','13','19') NOT NULL,
 	Handicap NUMERIC(1) NOT NULL,
 	Komi ENUM('0.5','6.5','7.5'),
-	Debut TIME NOT NULL,
-	Fin TIME,
+	Debut DATETIME NOT NULL,
+	Fin DATETIME,
 	Duree TIME,
 	Acces ENUM('Confidentiel','Prive','Public') NOT NULL,
 	JoueurNoir INTEGER,
@@ -90,7 +90,9 @@ DELIMITER //
 CREATE TRIGGER bi_Message
 BEFORE INSERT ON Message FOR EACH ROW
 BEGIN
-	SET NEW.Horodatage = NOW();
+	DECLARE tempsMessage TIME;
+	SET @tempsMessage := TIMEDIFF(NOW(), (SELECT Debut FROM Partie WHERE ID = NEW.Partie));
+	SET NEW.Horodatage = @tempsMessage;
 END //
 
 DELIMITER ;
@@ -101,10 +103,13 @@ DELIMITER //
 CREATE TRIGGER bi_Coup
 BEFORE INSERT ON Coup FOR EACH ROW
 BEGIN
-	-- DECLARE GobanCourant integer;
-	-- SET @GobanCourant := NEW.Goban;
-	-- UPDATE Goban SET Tour = Tour + 1 WHERE ID = @GobanCourant;
-	SET NEW.Horodatage = NOW();
+	DECLARE tempsCoup TIME;
+	SET @tempsCoup := TIMEDIFF(NOW(), (
+		SELECT Partie.Debut
+		FROM Goban
+			JOIN Partie ON Goban.Partie = Partie.ID
+		WHERE Goban.ID = NEW.Goban));
+	SET NEW.Horodatage = @tempsCoup;
 END //
 -- Il est fort probable que l'update de Goban (Tour++) ne soit pas à faire.
 -- Il me semble que Goban est une description (immutable) du goban à un tour.
