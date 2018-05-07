@@ -17,9 +17,9 @@
 
     //requete de la table partie
     if(!empty($hote)){
-      $requete = "SELECT * FROM partie WHERE JoueurN='$hote' AND Fin IS NULL LIMIT 1";
+      $requete = "SELECT * FROM Partie WHERE JoueurNoir='$hote' AND Fin IS NULL LIMIT 1";
     }else{
-      $requete = "SELECT * FROM partie WHERE idPartie=$id AND Fin IS NULL LIMIT 1";
+      $requete = "SELECT * FROM Partie WHERE ID=$id AND Fin IS NULL LIMIT 1";
     }
 
   }else{
@@ -27,7 +27,7 @@
     $hote = $_GET["search_Hote"];
     $id = $_GET["search_ID"];
 
-    $requete = "SELECT * FROM partie WHERE idPartie=$id LIMIT 1";
+    $requete = "SELECT * FROM Partie WHERE ID=$id LIMIT 1";
   }
 
   $res = $partie->rejoindrePartie($requete,$_SESSION["id"]);

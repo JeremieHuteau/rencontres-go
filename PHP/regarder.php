@@ -17,15 +17,15 @@
         
         if($typeDePartie == "en_Cours"){                        
             if(!empty($hote)){
-                $requete = "SELECT * FROM partie WHERE JoueurN=$hote AND Fin IS NULL AND JoueurB IS NOT NULL LIMIT 1";
+                $requete = "SELECT * FROM Partie WHERE JoueurNoir=$hote AND Fin IS NULL AND JoueurBlanc IS NOT NULL LIMIT 1";
             }else{
-                $requete = "SELECT * FROM partie WHERE idPartie=$id AND Fin IS NULL AND JoueurB IS NOT NULL LIMIT 1";
+                $requete = "SELECT * FROM Partie WHERE ID=$id AND Fin IS NULL AND JoueurBlanc IS NOT NULL LIMIT 1";
             }
         }else{            
             if(!empty($hote)){          
-                $requete = "SELECT * FROM partie WHERE JoueurN=$hote AND Fin IS NOT NULL AND JoueurB IS NOT NULL LIMIT 1";
+                $requete = "SELECT * FROM Partie WHERE JoueurNoir=$hote AND Fin IS NOT NULL AND JoueurBlanc IS NOT NULL LIMIT 1";
             }else{
-                $requete = "SELECT * FROM partie WHERE idPartie=$id AND Fin IS NOT NULL AND JoueurB IS NOT NULL LIMIT 1";
+                $requete = "SELECT * FROM Partie WHERE ID=$id AND Fin IS NOT NULL AND JoueurBlanc IS NOT NULL LIMIT 1";
             }
         }
 
@@ -34,7 +34,7 @@
         $hote = $_GET["search_Hote"];
         $id = $_GET["search_ID"];
         
-        $requete = "SELECT * FROM partie WHERE idPartie=$id LIMIT 1";
+        $requete = "SELECT * FROM Partie WHERE ID=$id LIMIT 1";
     }
 
     $res = $partie->regarderPartie($requete);
