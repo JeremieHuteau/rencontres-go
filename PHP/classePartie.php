@@ -104,5 +104,32 @@
             }
     }*/
 
+    function afficheUtilisateurs($utilisateur,$joueur,$id,$joueurB){
+        echo "ok";
+        //on associe les id aux pseudos pour permettre la recherche par pseudo
+        foreach ($this->$bdd->query($utilisateur) as $row) {
+            $tab_utilisateurs[] = array(
+            'id' => $row['ID'],
+            'nom' => $row['Pseudo'],
+            );
+            
+        }
+
+        foreach ($this->$bdd->query($utilisateur) as $row) {
+            if($tab_utilisateurs[$cpt]['id']==$joueur){
+              echo " <b>Hôte :</b> ".$tab_utilisateurs[$cpt]['nom'];
+            }
+            $cpt++;
+          }
+    
+          $cpt = 0;
+          foreach ($this->$bdd->query($utilisateur) as $row) {
+            if($tab_utilisateurs[$cpt]['id']==$joueurB){
+              echo " <b>Second Joueur :</b> ".$tab_utilisateurs[$cpt]['nom'];
+            }
+            $cpt++;
+          }
+    }
+
 }
 ?>

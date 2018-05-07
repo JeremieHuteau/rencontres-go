@@ -13,7 +13,7 @@
   try {
     $dbh = new PDO("mysql:host=$hst;dbname=$dsn","$user", "$password");
     //requete de la table utilisateurs
-    $utilisateur = 'SELECT * FROM utilisateur';
+    $utilisateur = 'SELECT * FROM Utilisateur';
 
     //on associe les id aux pseudos pour permettre la recherche par pseudo
     foreach ($dbh->query($utilisateur) as $row) {
@@ -45,26 +45,20 @@
 
 
       //affichage des pseudos au lieu des id
-      $cpt = 0;
       $joueur = $row['JoueurNoir'];
       $id = $row['ID'];
       $joueurB = $row['JoueurBlanc'];
 
-      foreach ($dbh->query($utilisateur) as $row) {
-        if($tab_utilisateurs[$cpt]['id']==$joueur){
-          echo " <b>Hôte :</b> ".$tab_utilisateurs[$cpt]['nom'];
+      for($i=0 ; $i<count($tab_utilisateurs) ; $i++){
+        if($tab_utilisateurs[$i]['id']==$joueur){
+          echo " <b>Hôte :</b> ".$tab_utilisateurs[$i]['nom'];
         }
-        $cpt++;
-      }
-
-      $cpt = 0;
-      foreach ($dbh->query($utilisateur) as $row) {
-        if($tab_utilisateurs[$cpt]['id']==$joueurB){
-          echo " <b>Second Joueur :</b> ".$tab_utilisateurs[$cpt]['nom'];
+        if($tab_utilisateurs[$i]['id']==$joueurB){
+          echo " <b>Second Joueur :</b> ".$tab_utilisateurs[$i]['nom'];
         }
-        $cpt++;
       }
-      echo "</li></a>";
+        
+      echo "</li></a></br></br>";
     }
 
   } catch (PDOException $e) {

@@ -43,17 +43,16 @@
       echo " <b>Taille du Goban :</b> ".$row['Taille'];
 
       //affichage des pseudos au lieu des id
-      $cpt = 0;
       $joueur = $row['JoueurNoir'];
       $id = $row['ID'];
-      foreach ($dbh->query($utilisateur) as $row) {
-        if($tab_utilisateurs[$cpt]['id']==$joueur){
-          echo " <b>Hôte :</b> ".$tab_utilisateurs[$cpt]['nom'];
+
+      for($i=0 ; $i<count($tab_utilisateurs) ; $i++){
+        if($tab_utilisateurs[$i]['id']==$joueur){
+          echo " <b>Hôte :</b> ".$tab_utilisateurs[$i]['nom'];
         }
-        $cpt++;
       }
 
-      echo "</li></a>";
+      echo "</li></a></br></br>";
     }
 
   } catch (PDOException $e) {
