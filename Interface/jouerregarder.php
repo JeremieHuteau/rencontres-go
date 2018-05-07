@@ -5,7 +5,13 @@
       <link rel="stylesheet" type="text/css" href="../CSS/style.css">
       <title>Rencontres-go</title>
     </head>
-    <body onload="form1.reset()">
+    <body onload="form1.reset();changeColor();">
+    <?php 
+        include_once "../PHP/testconnexion.php";
+        if(!$variableTestConnexion)
+        {
+          header("Location: /~ag044096/lol/Interface/connexion.php");
+        } ?>
       <?php include 'header.php';?>
       <div id="global">
         <div id="div_formulaire">
@@ -27,7 +33,7 @@
                    Terminée
                  </label>
                </p>
-               <p>Nom d'un des joueurs : </p>
+               <p>Nom de l'hôte : </p>
                <input type="text" size="20" maxlength="40" name="search_Hote_regarder" />
                <p>ou ID de la partie : </p>
                <input type="text" size="20" maxlength="40" name="search_ID_regarder" />
@@ -46,5 +52,5 @@
         </footer>
       </div>
     </body>
-
+    <script src="../JS/theme.js"></script>
   </html>

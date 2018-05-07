@@ -4,8 +4,9 @@
       <meta charset="utf-8" />
       <link rel="stylesheet" type="text/css" href="../CSS/style.css">
       <title>Rencontres-go</title>
+      <script type="text/javascript" src="../JS/theme.js"></script>
     </head>
-    <body>
+    <body onload="changeColor();">
       <?php include_once 'header.php';?>
       <div id="global">
         <p>Page d'accueil</p>

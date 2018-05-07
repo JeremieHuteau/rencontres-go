@@ -5,7 +5,7 @@
       <link rel="stylesheet" type="text/css" href="../CSS/style.css">
       <title>Rencontres-go</title>
     </head>
-    <body onload="form1.reset()">
+    <body onload="form1.reset();changeColor();">
 
         <form id="form1">
             <fieldset>
@@ -29,4 +29,5 @@
     </body>
     <script src="../JS/events.js"></script>
     <script src="../JS/regarderpartie.js"></script>
+    <script src="../JS/theme.js"></script>
   </html>

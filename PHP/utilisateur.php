@@ -12,6 +12,41 @@
       $this->bdd = $conn->db;
     }
 
+    public function changeTheme($theme,$id)
+    {
+      $req= $this->bdd->prepare("UPDATE profil SET Theme=? WHERE Util=?");
+      $req->execute(array($theme,$id));
+    }
+
+    // Envoie un mdp
+    public function recupPassword($mail)
+    {
+      $caracteres=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","0","1","2","3","4","5","6","7","8","9"];
+      $mdp = "";
+      for($i=0;$i<10;$i++)
+      {
+        $nb = rand(0,count($caracteres)-1);
+        $mdp = $mdp.$caracteres[$nb];
+      }
+
+      $hash = password_hash($mdp,PASSWORD_BCRYPT);
+
+      $req = $this->bdd->prepare("UPDATE utilisateur SET Password=? WHERE mail=?");
+      $req->execute(array($hash,$mail));
+
+
+      $to      = $mail;
+      $subject = 'Recuperation mot de passe';
+      $message = 'Voici votre nouveau mot de passe : '.$mdp;
+      $headers = 'From: ' . "\r\n" .
+      'Reply-To: ' . "\r\n" .
+      'X-Mailer: PHP/' . phpversion();
+
+      mail($to, $subject, $message, $headers);
+
+
+    }
+
     // Retourne l'id de l'utilisateur
     public function getId($var,$type)
     {
@@ -21,6 +56,14 @@
       $res = $req->fetch();
 
       return $res["idUtil"];
+    }
+
+    public function recupInfos($id)
+    {
+      $req = $this->bdd->prepare("SELECT * FROM utilisateur, profil WHERE idUtil=? AND idUtil=Util");
+      $req->execute(array($id));
+      $res = $req->fetch();
+      return $res;
     }
 
     // Insertion d un utilisateur dans la bdd
@@ -63,7 +106,7 @@
 
         $to      = $email;
         $subject = 'Inscription Go';
-        $message = 'Pour valider votre inscription : \n'.$lien;
+        $message = 'Pour valider votre inscription : </br> '.$lien;
         $headers = 'From: ' . "\r\n" .
         'Reply-To: ' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
@@ -103,21 +146,22 @@
 
       if($res3["nb"]==0)
       {
-        return 3;
+        return [3,-1];
       }
 
-      $req = $this->bdd->prepare("SELECT Password FROM utilisateur WHERE Mail=?");
+      $req = $this->bdd->prepare("SELECT idUtil, Password FROM utilisateur WHERE Mail=?");
       $req->execute(array($mail));
 
       $res = $req->fetch();
       $hash = $res["Password"];
 
+      $id = $res["idUtil"];
+
       if(password_verify($pass,$hash))
       {
-        return 0;
+        return [0,$id];
       }
-
-      return 2;
+      return [2,-1];
     }
 
     public function confirmationInscription($cle,$mail)

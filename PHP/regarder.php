@@ -1,37 +1,31 @@
 <?php
-//variables du formulaire qu'on récupère avec post
+    //variables du formulaire qu'on récupère avec post
+    ini_set('display_errors', 1);
+    session_start();
+    include_once("connexionDB.php");
 
+    include_once("../PHP/classePartie.php");
+    $partie = new classePartie();
 
-  //connexion à la bdd
-    $dsn = 'ag044096';
-    $user = 'ag044096';
-    $password = 'ag044096';
-    $host='172.31.21.41';
-
-  try {
-    $dbh = new PDO("mysql:host=$host;dbname=$dsn","$user", "$password");
     if(isset($_POST['search_Hote_regarder']) && isset($_POST['search_ID_regarder'])){
         $typeDePartie = $_POST['type_Partie'];
         $hote = $_POST['search_Hote_regarder'];
         $id = $_POST['search_ID_regarder'];
         //recherche de l'id correspondant au pseudo de l'utilisateur 
-        $utilisateur = "SELECT * FROM utilisateur WHERE Pseudo='$hote'";
-        $prepara = $dbh->prepare($utilisateur);
-        $prepara->execute();
-        $row = $prepara->fetch();
+        $row=$partie->recupereID($hote);
         $hote = $row['idUtil']; 
         
         if($typeDePartie == "en_Cours"){                        
             if(!empty($hote)){
-                $partie = "SELECT * FROM partie WHERE JoueurN=$hote AND Fin IS NULL AND JoueurB IS NOT NULL LIMIT 1";
+                $requete = "SELECT * FROM partie WHERE JoueurN=$hote AND Fin IS NULL AND JoueurB IS NOT NULL LIMIT 1";
             }else{
-                $partie = "SELECT * FROM partie WHERE idPartie=$id AND Fin IS NULL AND JoueurB IS NOT NULL LIMIT 1";
+                $requete = "SELECT * FROM partie WHERE idPartie=$id AND Fin IS NULL AND JoueurB IS NOT NULL LIMIT 1";
             }
         }else{            
             if(!empty($hote)){          
-                $partie = "SELECT * FROM partie WHERE JoueurN=$hote AND Fin IS NOT NULL AND JoueurB IS NOT NULL LIMIT 1";
+                $requete = "SELECT * FROM partie WHERE JoueurN=$hote AND Fin IS NOT NULL AND JoueurB IS NOT NULL LIMIT 1";
             }else{
-                $partie = "SELECT * FROM partie WHERE idPartie=$id AND Fin IS NOT NULL AND JoueurB IS NOT NULL LIMIT 1";
+                $requete = "SELECT * FROM partie WHERE idPartie=$id AND Fin IS NOT NULL AND JoueurB IS NOT NULL LIMIT 1";
             }
         }
 
@@ -40,23 +34,13 @@
         $hote = $_GET["search_Hote"];
         $id = $_GET["search_ID"];
         
-        $partie = "SELECT * FROM partie WHERE idPartie=$id LIMIT 1";
+        $requete = "SELECT * FROM partie WHERE idPartie=$id LIMIT 1";
     }
 
-    $prepara = $dbh->prepare($partie);
-    $prepara->execute();
-    $row = $prepara->fetch();
-    if($row==false){
-      echo "Il n'y a aucune partie correspondant aux critères";
-    }else{
-      //affichage du résultat qui sera supprimé à terme
-      echo "Vous avez rejoins la partie de ".$row['JoueurN'];
-      echo "<br />L'id de la partie est ".$row['idPartie'];
-      echo "<br />La taille du goban est ".$row['Taille'];
-      echo "<br />Le deuxième joueur est ".$row['JoueurB'];
-    }
+    $res = $partie->regarderPartie($requete);
 
-  } catch (PDOException $e) {
-        echo 'Connection failed: ' . $e->getMessage();
-  }
+    if($res)
+    {
+      header("Location: /~ag044096/lol/Interface/partie.php?id=".$res);
+    }
 ?>

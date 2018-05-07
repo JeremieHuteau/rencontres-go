@@ -24,7 +24,7 @@
   $resultat = $user->identification($email,$password);
 
   // Si connexion réussie
-  if($resultat==0)
+  if($resultat[0]==0)
   {
     // Retour succes
     echo "0";
@@ -32,10 +32,11 @@
     // Session
     $_SESSION["user"] = $email;
     $_SESSION["password"] = $password;
+    $_SESSION["id"] = $resultat[1];
   }
   else
   {
-    echo $resultat;
+    echo $resultat[1];
   }
 
 ?>

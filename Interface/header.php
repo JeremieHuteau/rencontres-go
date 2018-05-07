@@ -1,4 +1,9 @@
 <header>
+  <?php
+    include("../PHP/testconnexion.php");
+  ?>
+  <script src="../JS/theme.js"></script>
+  <input type="hidden" id="theme" value="<?=$themeUser?>"/>
   <nav>
     <ul>
       <li class="bouton_header">
@@ -30,16 +35,12 @@
           </ul>
       </li>
       <li class="bouton_header">
-          <a href="connexion.php">
             <?php
-            $utilisateurConnecte = false;
-            if ($utilisateurConnecte == true) :
-            { echo 'Compte';}
-            else :
-            { echo 'Connexion';}
-            endif;
+            if ($variableTestConnexion == true)
+            { echo '<a href="monCompte.php"> Compte </a>';}
+            else
+            { echo '<a href="connexion.php"> Connexion </a>';}
             ?>
-          </a>
       </li>
     </ul>
   </nav>

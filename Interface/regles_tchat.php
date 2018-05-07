@@ -5,7 +5,7 @@
       <link rel="stylesheet" type="text/css" href="../CSS/style.css">
       <title>Rencontres-go</title>
     </head>
-    <body>
+    <body onload="changeColor();">
       <?php include_once 'header.php';?>
       <div id="global">
         <h1>Règles générales pour l’utilisation du tchat</h1>
@@ -96,4 +96,5 @@
         </footer>
       </div>
     </body>
+    <script src="../JS/theme.js"></script>
   </html>

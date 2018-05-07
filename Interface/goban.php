@@ -11,12 +11,13 @@
 						mais ça ne marche pas si je les rassemble-->
 
 
-	<body>
+	<body onload="changeColor();">
 		<div class="map" id="map">
 
 		</div>
 
 	</body>
+	<script src="../JS/theme.js"></script>
 </html>
 
 
