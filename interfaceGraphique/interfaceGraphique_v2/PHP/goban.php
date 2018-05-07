@@ -5,14 +5,13 @@
 		<link rel="stylesheet" href="../CSS/try.css" />
 		<link rel="stylesheet" href="../CSS/goban.css" />
 		<meta name="viewPort" content="width=device-width, initial-scale=1.0 maximum-scale=1.0 minimal-ui">
-		<script src="../JS/goban.js"></script>
 	</head>
 
 						<!--Alors oui, j'ai du mettre deux pages CSS différentes, je sais pas si ça vient de mon wamp,
 						mais ça ne marche pas si je les rassemble-->
 
 
-	<body onload="Init()">
+	<body>
 		<div class="map" id="map">
 
 		</div>

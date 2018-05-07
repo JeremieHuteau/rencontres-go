@@ -1,67 +1,75 @@
 <?php
-  ini_set('display_errors', 1);
-  session_start();
-  require("connect.php");
+    ini_set('display_errors', 1);
+    session_start();
+    require("connect.php");
 
-  $d = array();
-  if(!isset($_SESSION["user"]) || empty($_SESSION["user"]) || !isset($_POST["action"]))
-  {
-    $d["erreur"] = "Vous devez être connecté pour utiliser le tchat";
-  }
-  else
-  {
-    extract($_POST);
-    $user = $_SESSION["user"];
-    /**
-    * Action : addMessage
-    * Permet l'ajout d'un message
-    **/
-    if($_POST["action"] == "addMessage")
+    if(!isset($_SESSION["user"]) || empty($_SESSION["user"]))
     {
-      try
-      {
-        $sql = "INSERT INTO messages(user,`message`,`date`) VALUES(?,?,?)";
-        $stmt = $dbh->prepare($sql);
-        $stmt->execute(array($user,$message,time()));
-        $d["erreur"] = "ok";
-      }
-      catch (\Exception $e)
-      {
-        echo $e->getMessage();
-      }
+        echo "Vous devez être connecté pour utiliser le tchat";
+        return;
     }
-    
 
-  /**
-    * Action : getMessages
-    * Permet l'affichage des derniers messages
-    **/
-    if($_POST["action"] == "getMessages")
-    {
-      try
-      {
-        $lastid = floor($lastid);
-        $sql = "SELECT * FROM messages WHERE id > $lastid ORDER BY `date` ASC";
-        $req = $dbh->query($sql);
-        
-        $data = $req->fetchAll(PDO::FETCH_ASSOC);
 
-        $result = array();
-        foreach($data as $row){
-          array_push($result, $row["user"]);
-          break;
+    if (isset($_POST["partie"]) && isset($_POST["tchat"])
+        && isset($_POST["contenu"]) && !empty($_POST["contenu"])) {
+
+        try {
+            $stmt = $dbh->prepare("
+                INSERT INTO Message VALUES (
+                    0, :partie, :auteur, :horodatage, :contenu, :tchat)
+            ");
+
+            $parameters = array(
+                "partie" => $_POST["partie"],
+                "auteur" => 1,//$_SESSION["id"],
+                "horodatage" => 0,
+                "contenu" => $_POST["contenu"],
+                "tchat" => $_POST["tchat"]
+            );
+
+            $stmt->execute($parameters);
+            $res = $stmt->errorCode();
+
+            echo json_encode($res);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
         }
-        $d["result"] = $result[0];
-
-        $d["lastid"] = $data["id"];
-      
-        $d["erreur"]="ok";
-      }
-      catch (\Exception $e)
-      {
-        $d["erreur"]=$e->getMessage();
-      }
     }
-    echo json_encode($d);
-  }
+
+
+
+    if (isset($_GET["partie"]) && isset($_GET["tchat"])) {
+        try {
+            $stmt = $dbh->prepare("
+                SELECT Message.ID, Utilisateur.Pseudo, Message.Horodatage, Message.Contenu
+                FROM Message JOIN Utilisateur
+                    ON Message.Auteur = Utilisateur.ID
+                WHERE Message.Partie = :partie
+                    AND Message.Chat = :tchat
+                    AND Message.ID > :after
+                ORDER BY Message.ID
+            ");
+
+            $parameters = array(
+                "partie" => $_GET["partie"],
+                "tchat" => $_GET["tchat"]
+            );
+
+            if (isset($_GET["after"]) and !empty($_GET["after"])) {
+                $after = $_GET["after"];
+            } else {
+                $after = -1;
+            }
+            $parameters["after"] = $after;
+
+            $stmt->execute($parameters);
+
+            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            echo json_encode($rows);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
  ?>
