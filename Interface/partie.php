@@ -5,6 +5,7 @@
       <link rel="stylesheet" type="text/css" href="../CSS/style.css">
       <link rel="stylesheet" href="../CSS/try.css" />
   		<link rel="stylesheet" href="../CSS/goban.css" />
+        <script src="../JS/events.js" charset="utf-8"></script>
       <title>Rencontres-go</title>
     </head>
     <body>
@@ -12,7 +13,7 @@
       <div id="global ">
         <div id="div_Partie">
           <p>
-            Chat
+            <?php include_once '../Interface/tchat.php';?>
           </p>
         </div>
         <div id="div_Partie">
@@ -28,6 +29,7 @@
         <footer>
           <p>Projet Développement d'applications web - Université de Bourgogne - Groupe 2</p>
         </footer>
+
       </div>
     </body>
   </html>
