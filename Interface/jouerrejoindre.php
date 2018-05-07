@@ -5,6 +5,12 @@
       <link rel="stylesheet" type="text/css" href="../CSS/style.css">
       <title>Rencontres-go</title>
     </head>
+    <?php 
+        include_once "../PHP/testconnexion.php";
+        if(!$variableTestConnexion)
+        {
+          header("Location: /~ag044096/lol/Interface/connexion.php");
+        } ?>
     <body onload="form1.reset();changeColor();">
       <?php include 'header.php';?>
       <div id="global">
