@@ -39,7 +39,7 @@
     foreach ($dbh->query($partie) as $row) {
 
       echo "<a href=\"../PHP/rejoindre.php?search_Hote=" . $row['JoueurNoir'] . "&search_ID=" . $row['ID'] . "\"><li>";
-      echo "<b>ID partie :</b> ".$row['idPartie'];
+      echo "<b>ID partie :</b> ".$row['ID'];
       echo " <b>Taille du Goban :</b> ".$row['Taille'];
 
       //affichage des pseudos au lieu des id
