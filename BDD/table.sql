@@ -10,6 +10,12 @@ CREATE TABLE Utilisateur(
 	CONSTRAINT UNIQUE (Mail)
 );
 
+DROP TABLE IF EXISTS `Moderateur`;
+CREATE TABLE Moderateur(
+	Utilisateur INTEGER PRIMARY KEY,
+	CONSTRAINT fk_ModerateurUtilisateur FOREIGN KEY (Utilisateur) REFERENCES Utilisateur(ID)
+);
+
 DROP TABLE IF EXISTS `Profil`;
 CREATE TABLE Profil(
 	Utilisateur INTEGER PRIMARY KEY,
@@ -48,7 +54,7 @@ CREATE TABLE Partie(
 	CONSTRAINT fk_PartieV FOREIGN KEY (Vainqueur) REFERENCES Utilisateur(ID)
 );
 
-DROP TABLE IF EXISTS `goban`;
+DROP TABLE IF EXISTS `Goban`;
 CREATE TABLE Goban(
 	ID INTEGER PRIMARY KEY AUTO_INCREMENT,
 	Partie INTEGER,
